@@ -174,11 +174,6 @@ if st.sidebar.button("🚀 Predict Churn"):
                 </div>
                 <div class="result-badge {badge_class}">{badge_text}</div>
             </div>
-            <div class="result-caption">
-                Decision threshold: {result.threshold * 100:.1f}% — chosen to give the best precision
-                while still catching at least 75% of actual churners on validation data
-                (not a fixed 50/50 cutoff).
-            </div>
         </div>
         """,
         unsafe_allow_html=True,
