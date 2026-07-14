@@ -60,11 +60,11 @@ streamlit run churn_app.py
 
 | Metric                          | Value |
 |----------------------------------|-------|
-| ROC-AUC                          | TBD   |
-| PR-AUC                           | TBD   |
-| F1 (churn class, default 0.5)     | TBD   |
-| F1 (churn class, tuned threshold) | TBD   |
-| Tuned decision threshold          | TBD   |
+| ROC-AUC                          | 0.844  |
+| PR-AUC                           | 0.673  |
+| F1 (churn class, default 0.5)     | 0.58   |
+| F1 (churn class, tuned threshold) | 0.56   |
+| Tuned decision threshold          | 0.192  |
 
 
 ## Testing & API
