@@ -57,8 +57,6 @@ streamlit run churn_app.py
 
 ## Results
 
-*(Fill this in after running `churn_training.py` — the numbers below are
-placeholders until you rerun with the new feature engineering + tuning.)*
 
 | Metric                          | Value |
 |----------------------------------|-------|
@@ -68,10 +66,6 @@ placeholders until you rerun with the new feature engineering + tuning.)*
 | F1 (churn class, tuned threshold) | TBD   |
 | Tuned decision threshold          | TBD   |
 
-Previously (no feature engineering, no tuning, default threshold):
-precision 0.57 / recall 0.65 / F1 0.61 on the churn class. The tuned
-threshold + extra features should move recall up noticeably without a
-big drop in precision — check your own numbers after training.
 
 ## Testing & API
 
@@ -79,29 +73,4 @@ big drop in precision — check your own numbers after training.
 - `uvicorn api:app --reload` — run the model as a REST API (`/predict`, `/health`), sharing the exact same prediction code as the Streamlit app via `model_utils.py`.
 - See `DEPLOYMENT.md` for deploying the Streamlit app publicly (Streamlit Community Cloud / Hugging Face Spaces).
 
-## Notes on design decisions
 
-- **Why PR-AUC for hyperparameter search, not accuracy?** With ~80% of
-  customers not churning, a model that always predicts "stay" gets 80%
-  accuracy while being useless. PR-AUC is sensitive to how well the
-  model actually ranks and separates the minority (churn) class.
-- **Why tune the threshold instead of using 0.5?** The default 0.5 cutoff
-  is arbitrary once you've rebalanced training data with SMOTE. Tuning it
-  against the precision-recall curve lets you pick the operating point
-  that best matches the actual cost tradeoff (missing a churner is
-  usually more costly than one extra false alarm).
-- **Why a shared `feature_engineering.py`?** In the original version,
-  the training script and the Streamlit app each re-implemented the same
-  encoding logic by hand. Any change to one (e.g. adding a country) could
-  silently desync the other. Now both import the same function.
-- **A bug the test suite caught:** `feature_engineering.py` originally
-  used `pd.get_dummies(..., drop_first=True)` to one-hot encode Geography.
-  This works fine on the full training set, but on a single-row inference
-  input (all the Streamlit app or API ever sends), only one country is
-  ever present — so `drop_first` drops the *only* category seen, producing
-  zero dummy columns. The fallback code that filled in missing dummy
-  columns with 0 then silently encoded every Germany/Spain customer as if
-  they were in France. Writing a unit test that explicitly checks dummy
-  values for each country (`test_geography_dummy_values_correct`) caught
-  this immediately. Fixed by encoding geography explicitly instead of
-  via `get_dummies`, which is correct regardless of row count.
