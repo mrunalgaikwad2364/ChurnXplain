@@ -1,0 +1,50 @@
+{
+  "feature_names": [
+    "CreditScore",
+    "Gender",
+    "Age",
+    "Tenure",
+    "Balance",
+    "NumOfProducts",
+    "HasCrCard",
+    "IsActiveMember",
+    "EstimatedSalary",
+    "Geography_Germany",
+    "Geography_Spain",
+    "Zero_Balance",
+    "Balance_Salary_Ratio",
+    "Products_Per_Tenure"
+  ],
+  "best_threshold": 0.19196674227714539,
+  "feature_averages": {
+    "CreditScore": 650.7525,
+    "Gender": 0.548375,
+    "Age": 38.946625,
+    "Tenure": 5.016625,
+    "Balance": 76381.20749875,
+    "NumOfProducts": 1.5295,
+    "HasCrCard": 0.70875,
+    "IsActiveMember": 0.514875,
+    "EstimatedSalary": 99730.81158125,
+    "Geography_Germany": 0.250625,
+    "Geography_Spain": 0.25025,
+    "Zero_Balance": 0.361375,
+    "Balance_Salary_Ratio": 4.111703394678109,
+    "Products_Per_Tenure": 0.3658498106060606
+  },
+  "metrics": {
+    "roc_auc": 0.8444931834762344,
+    "pr_auc": 0.6725725249332578,
+    "f1_churn_default_threshold": 0.5843293492695883,
+    "f1_churn_tuned_threshold": 0.5625,
+    "target_recall": 0.75
+  },
+  "best_params": {
+    "subsample": 0.9,
+    "n_estimators": 500,
+    "min_child_weight": 1,
+    "max_depth": 5,
+    "learning_rate": 0.1,
+    "colsample_bytree": 1.0
+  }
+}

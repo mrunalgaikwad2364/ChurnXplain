@@ -1,0 +1,13 @@
+pandas
+numpy
+scikit-learn
+imbalanced-learn
+xgboost
+shap
+matplotlib
+plotly
+streamlit
+fastapi
+uvicorn[standard]
+pytest
+httpx
