@@ -34,7 +34,7 @@ api.py                        # FastAPI service exposing /predict
 tests/                          # pytest suite (feature engineering, model logic, API)
 requirements.txt
 DEPLOYMENT.md              # how to deploy the app, run the API, and run tests/CI
-Dataset/Churn_Modelling.csv   # <- you provide this
+Dataset/Churn_Modelling.csv  
 ```
 
 ## Setup
